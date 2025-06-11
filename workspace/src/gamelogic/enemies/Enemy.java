@@ -12,6 +12,7 @@ public class Enemy extends PhysicsObject{
 
 	private float walkSpeed = 80;
 	private BufferedImage image;
+	private int time = 0;
 	
 	public Enemy(float x, float y, Level level) {
 		super(x, y,(int)(level.getLevelData().getTileSize()*1.5), (int)(level.getLevelData().getTileSize()*1.5), level);
@@ -34,7 +35,15 @@ public class Enemy extends PhysicsObject{
 	@Override
 	public void draw(Graphics g) {
 		g.drawImage(image, (int)position.x, (int)position.y, width, height, null);
-		
+		time++;
+		if(time%500==0){
+			boolean dir = true;
+			if(movementVector.x < 0){
+				dir = false;
+			}
+			Star s = new Star(this.getX(), this.getY()+10, dir, this.getLevel());
+			
+		}
 		hitbox.draw(g);
 	}
 	

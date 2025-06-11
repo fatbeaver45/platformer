@@ -4,12 +4,13 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import gameengine.maths.Vector2D;
+import gamelogic.GameResources;
 import gamelogic.Main;
 import gamelogic.player.Player;
 
 public class Camera {
 
-	public static final boolean SHOW_CAMERA = false;
+	public static boolean SHOW_CAMERA = false;
 	
 	private Vector2D position;
 	private Player player;
@@ -81,8 +82,10 @@ public class Camera {
 	
 	//used for debugging
 	public void draw (Graphics g) {
-		g.setColor(Color.RED);
-		g.drawOval((int)(position.x + width/2) - size/2, (int)(position.y + height/2) - size/2, size, size);
+		// g.setColor(Color.RED);
+		// g.drawOval((int)(position.x + width/2) - size/2, (int)(position.y + height/2) - size/2, size, size);
+		g.drawImage(GameResources.viginette, ((int)player.getX())-GameResources.viginette.getWidth()/2, ((int)player.getY())-GameResources.viginette.getHeight()/2, null);
+
 	}
 	
 	public void setFocusedObject(Player object) {
